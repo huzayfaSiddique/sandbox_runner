@@ -19,7 +19,6 @@
 - [Usage](#usage)
 - [Project Structure](#project-structure)
 - [Testing](#testing)
-- [Roadmap](#roadmap)
 - [Known Limitations](#known-limitations)
 - [Contributing](#contributing)
 
@@ -303,18 +302,6 @@ uv run pytest
   - `run_code` invalid language — verifies error response and that DB is **not** written
   - `list_supported_languages` — returns entries for both `python` and `cpp`
   - `get_execution_history` — timestamps formatted as ISO 8601 strings
-
----
-
-## Roadmap
-
-- [ ] Mocked tests for the C++ two-stage compile/run flow
-- [ ] Mocked timeout/kill path tests
-- [ ] Per-request resource overrides within a configurable ceiling
-- [ ] Support for additional languages (Node.js, Rust, Go)
-- [ ] Optional full stdout/stderr retention in history
-- [ ] CI pipeline (GitHub Actions)
-- [ ] Container pre-warming to reduce cold-start latency
 
 ---
 
