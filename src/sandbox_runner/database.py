@@ -30,16 +30,22 @@ def get_conn()->sqlite3.Connection:
         _conn.commit()
     return _conn
 
-def record_run(language: str, code_snippet: str, status: str,exit_code: int |None,duration_ms:float,
-stdout_size: str,stderr_size:str) -> int:
-    """Record a single run into the history table. """
+def record_run(language: str, code_snippet: str, status: str, exit_code: int | None, duration_ms: float,
+stdout: str, stderr: str) -> int:
+    """Record a single run into the history table.
+
+    stdout/stderr are the full captured output text; only their UTF-8 byte
+    lengths are persisted (stdout_size/stderr_size columns), not the content.
+    """
     conn=get_conn()
     code_snippet_for_db=code_snippet[:500]
+    stdout_size = len(stdout.encode("utf-8"))
+    stderr_size = len(stderr.encode("utf-8"))
     cursor=conn.cursor()
     cursor.execute("""
         INSERT INTO runs (timestamp,language,code_snippet,status,exit_code,duration_ms,stdout_size,stderr_size)
         VALUES (?,?,?,?,?,?,?,?)
-        """,(time.time(),language,code_snippet_for_db,status,exit_code,duration_ms,len(stdout_size),len(stderr_size)))
+        """,(time.time(),language,code_snippet_for_db,status,exit_code,duration_ms,stdout_size,stderr_size))
     conn.commit()
     return cursor.lastrowid
 
