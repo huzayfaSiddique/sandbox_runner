@@ -109,8 +109,8 @@ MCP Client ──(stdio / sse)──▶  SandboxRunner (FastMCP)
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/your-username/sandbox-runner.git
-cd sandbox-runner
+git clone https://github.com/huzayfaSiddique/sandbox_runner.git
+cd sandbox_runner
 
 # 2. Ensure Docker is running
 docker ps
