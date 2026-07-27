@@ -3,7 +3,7 @@ name = "sandbox-runner"
 version = "0.1.0"
 description = "A Model Context Protocol (MCP) server that securely executes Python and C++ code snippets inside isolated, ephemeral Docker containers."
 readme = "README.md"
-requires-python = ">=3.14"
+requires-python = ">=3.12"
 dependencies = [
     "docker>=7.1.0",
     "mcp[cli]>=1.28.1",
